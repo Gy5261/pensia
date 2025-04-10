@@ -1,0 +1,929 @@
+/* DeepSearch component styles */
+.deep-search-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark .deep-search-card {
+  background: rgba(30, 30, 35, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.step-indicator {
+  position: relative;
+}
+
+.step-indicator::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 24px;
+  bottom: 0;
+  width: 2px;
+  background: rgba(200, 200, 200, 0.5);
+  z-index: 0;
+}
+
+.dark .step-indicator::before {
+  background: rgba(80, 80, 80, 0.5);
+}
+
+.step-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.step-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.step-marker.completed {
+  background: #10b981 !important;
+  color: white !important;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2) !important;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Añadir animación de brillo al completar */
+.step-marker.completed::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0) 70%);
+  opacity: 0;
+  animation: glow-effect 2s ease-in-out forwards;
+}
+
+@keyframes glow-effect {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.step-marker.active {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  animation: pulse 2s infinite;
+}
+
+.step-marker.pending {
+  background: rgba(200, 200, 200, 0.5);
+  color: rgba(100, 100, 100, 0.8);
+}
+
+.dark .step-marker.pending {
+  background: rgba(80, 80, 80, 0.5);
+  color: rgba(200, 200, 200, 0.5);
+}
+
+.source-link {
+  color: #3b82f6;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.source-link:hover {
+  text-decoration: underline;
+  color: #2563eb;
+}
+
+/* Añadir estilos para el botón de expansión */
+.expand-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 200, 200, 0.5);
+  color: rgba(60, 60, 60, 0.8);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .expand-button {
+  background: rgba(80, 80, 80, 0.5);
+  color: rgba(220, 220, 220, 0.8);
+}
+
+.expand-button:hover {
+  background: rgba(180, 180, 180, 0.7);
+  transform: scale(1.1);
+}
+
+.dark .expand-button:hover {
+  background: rgba(100, 100, 100, 0.7);
+}
+
+.expand-button:active {
+  transform: scale(0.95);
+}
+
+.expand-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.expand-button:hover::before {
+  opacity: 1;
+}
+
+.menu-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 200, 200, 0.5);
+  color: rgba(60, 60, 60, 0.8);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.dark .menu-button {
+  background: rgba(80, 80, 80, 0.5);
+  color: rgba(220, 220, 220, 0.8);
+}
+
+.expand-button:hover,
+.menu-button:hover {
+  background: rgba(180, 180, 180, 0.7);
+}
+
+.dark .expand-button:hover,
+.dark .menu-button:hover {
+  background: rgba(100, 100, 100, 0.7);
+}
+
+.lomon-gene {
+  font-family: "SF Pro Display", system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(100, 100, 100, 0.7);
+}
+
+.dark .lomon-gene {
+  color: rgba(200, 200, 200, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Vision OS specific styles */
+.visionos-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.visionos-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transform: translateY(-2px);
+}
+
+.visionos-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.visionos-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.visionos-button:active {
+  transform: scale(0.98);
+}
+
+/* Thinking time display styles */
+.thinking-time-display {
+  background: rgba(30, 30, 40, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.thinking-time-display:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth animations for content loading */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(200, 200, 200, 0.2) 8%,
+    rgba(200, 200, 200, 0.3) 18%,
+    rgba(200, 200, 200, 0.2) 33%
+  );
+  background-size: 800px 104px;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.dark .animate-shimmer {
+  background: linear-gradient(to right, rgba(80, 80, 80, 0.2) 8%, rgba(80, 80, 80, 0.3) 18%, rgba(80, 80, 80, 0.2) 33%);
+  background-size: 800px 104px;
+}
+
+/* Expand/collapse animation */
+.expanded-container {
+  position: fixed;
+  inset: 16px;
+  z-index: 50;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Añadir estilos para el resaltado de sintaxis de código */
+
+/* Estilos para bloques de código en DeepSearch */
+.language-python {
+  color: #e6edf3 !important;
+  font-family: "JetBrains Mono", "Fira Code", monospace !important;
+  line-height: 1.5 !important;
+  background-color: #0d1117 !important;
+}
+
+.deep-search-container pre {
+  background-color: #0d1117 !important;
+  color: #e6edf3 !important;
+  border-radius: 0.5rem !important;
+  overflow-x: auto !important;
+  margin: 1rem 0 !important;
+}
+
+.deep-search-container code {
+  background-color: transparent !important;
+  font-family: "JetBrains Mono", "Fira Code", monospace !important;
+}
+
+.language-python .keyword {
+  color: #79b8ff;
+}
+
+.language-python .string {
+  color: #e08c48;
+}
+
+.language-python .comment {
+  color: #8b949e;
+}
+
+.language-python .function {
+  color: #79b8ff;
+}
+
+/* Mejorar la transparencia para el componente Think */
+.thinking-panel {
+  background-color: rgba(30, 30, 40, 0.66) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.thinking-content {
+  background-color: rgba(30, 30, 40, 0.33) !important;
+}
+
+/* Estilos para el contador de pensamiento */
+.thinking-counter {
+  font-family: "SF Pro Display", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: rgba(59, 130, 246, 0.9);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Estilos para la sección de fuentes */
+.sources-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sources-section:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.source-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.source-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Animación para el estado "Finalizado" */
+@keyframes pulse-green {
+  0%,
+  100% {
+    color: rgba(16, 185, 129, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    color: rgba(16, 185, 129, 0.8);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+  }
+}
+
+.finished-text {
+  color: #10b981 !important;
+  font-weight: 600;
+  animation: pulse-green 2s infinite;
+}
+
+/* Estilos para el contenedor expandido */
+.deep-search-container.expanded {
+  position: fixed !important;
+  inset: 5% !important;
+  z-index: 50 !important;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  background-color: rgba(17, 24, 39, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+/* Estilos para la información de parámetros */
+.parameter-info {
+  font-family: "SF Pro Text", system-ui, sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(30, 30, 40, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para la barra de progreso al estilo iOS */
+.ios-progress-track {
+  height: 2px;
+  background: rgba(80, 80, 80, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ios-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #34d399, #10b981);
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efecto de brillo para la barra de progreso */
+.ios-progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: translateX(-100%);
+  animation: shimmer-progress 2s infinite;
+}
+
+@keyframes shimmer-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Estilos para los indicadores de paso */
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(80, 80, 80, 0.5);
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-dot.active {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.step-dot.completed {
+  background-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Animación de pulso para el paso activo */
+@keyframes dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.step-dot.active {
+  animation: dot-pulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Añadir al final del archivo */
+
+/* Estilos mejorados para fórmulas matemáticas */
+.math-renderer {
+  position: relative;
+  min-height: 24px;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.math-renderer.block-math {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: rgba(30, 30, 40, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  margin: 1.5rem 0;
+}
+
+.math-renderer.block-math:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.math-renderer.inline-math {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0.25rem;
+  background-color: rgba(40, 40, 50, 0.4);
+  border-radius: 0.25rem;
+  padding: 0 0.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.math-renderer.inline-math:hover {
+  background-color: rgba(50, 50, 60, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.math-content {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  width: 100%;
+  text-align: center;
+}
+
+.math-copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(60, 60, 70, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.math-copy-button:hover {
+  background-color: rgba(80, 80, 90, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para KaTeX */
+.katex {
+  font-size: 1.1em !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.katex-display {
+  margin: 0.5em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}
+
+.katex-display > .katex {
+  max-width: 100%;
+}
+
+/* Animación para fórmulas matemáticas */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.katex-display > .katex {
+  animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Estilo para errores de renderización */
+.math-render-error {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+.math-render-error::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  opacity: 0;
+  animation: pulse-error 2s infinite;
+}
+
+@keyframes pulse-error {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Efectos de VisionOS para la barra de progreso */
+.visionos-progress-track {
+  height: 2px;
+  background: rgba(80, 80, 80, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 0.5px solid rgba(255, 255, 255, 0.05);
+}
+
+.visionos-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(52, 211, 153, 0.8), rgba(16, 185, 129, 0.9));
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+/* Efecto de brillo para la barra de progreso */
+.visionos-progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  animation: shimmer-progress 2s infinite;
+}
+
+/* Añadir nuevos estilos para animaciones más suaves */
+/* Buscar la sección de animaciones y añadir o modificar: */
+
+/* Animaciones ultra suaves estilo VisionOS */
+.visionos-transition {
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visionos-spring {
+  transition: all 0.9s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Animación de desvanecimiento suave */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.9s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+/* Animación de pulso más suave */
+@keyframes pulse-smooth {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.pulse-smooth {
+  animation: pulse-smooth 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Animación de resplandor más suave */
+@keyframes glow-smooth {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+}
+
+.glow-smooth {
+  animation: glow-smooth 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Mejorar las transiciones de hover */
+.visionos-hover {
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visionos-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Efectos de profundidad para VisionOS */
+.visionos-depth-effect {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.visionos-depth-item {
+  transform: translateZ(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visionos-depth-effect:hover .visionos-depth-item {
+  transform: translateZ(20px);
+}
+
+/* Efectos de resplandor para VisionOS */
+.visionos-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.visionos-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.visionos-glow:hover::before {
+  opacity: 1;
+}
+
+/* Add these new styles at the end of the file */
+
+/* Enhanced glowing pill effects */
+@keyframes elegant-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.3), 0 0 10px 0 rgba(255, 255, 255, 0.2), inset 0 0 5px 0
+      rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 0 30px 5px rgba(255, 255, 255, 0.3), inset 0 0 10px 0
+      rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.elegant-pill {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  animation: elegant-pulse 3s infinite ease-in-out;
+}
+
+.elegant-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  animation: shimmer-elegant 2s infinite;
+}
+
+@keyframes shimmer-elegant {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.elegant-pill::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 30px;
+  padding: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-glow 3s infinite ease-in-out;
+}
+
+@keyframes border-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Floating particles effect */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.particle-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particle {
+  animation: float-up 2s ease-in-out infinite;
+}
+

@@ -1,0 +1,164 @@
+/* Optimizaciones de rendimiento y animaciones al estilo iOS 18.2 */
+
+/* Optimizaciones para reducir la latencia táctil */
+.touch-responsive {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Curvas de animación de iOS 18.2 */
+.ios-animation {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.275s;
+}
+
+.ios-spring {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animaciones de apertura de apps */
+@keyframes ios-open {
+  from {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ios-open {
+  animation: ios-open 0.275s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Animaciones de cierre de apps */
+@keyframes ios-close {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+}
+
+.ios-close {
+  animation: ios-close 0.275s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Efectos de blur dinámico */
+.ios-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: backdrop-filter 0.275s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimizaciones para GPU */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Efectos de feedback táctil */
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--touch-x, 50%) var(--touch-y, 50%),
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+  pointer-events: none;
+}
+
+.touch-feedback:active::after {
+  opacity: 1;
+  transition-duration: 0.05s;
+}
+
+/* Optimizaciones para botones */
+button.ios-button {
+  position: relative;
+  transform: translateZ(0);
+  transition: transform 0.275s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.275s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.275s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity, background-color;
+}
+
+button.ios-button:active {
+  transform: scale(0.96);
+  transition-duration: 0.1s;
+}
+
+/* Efectos de profundidad */
+.depth-effect {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.depth-layer {
+  transform: translateZ(0);
+  transition: transform 0.275s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.depth-effect:hover .depth-layer {
+  transform: translateZ(10px);
+}
+
+/* Optimizaciones para animaciones de carga */
+.ios-loading {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* Efectos de desplazamiento suave */
+.ios-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Optimizaciones para transiciones entre vistas */
+.view-transition {
+  transition: opacity 0.275s cubic-bezier(0.4, 0, 0.2, 1), transform 0.275s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.view-enter {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.view-enter-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.view-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.view-exit-active {
+  opacity: 0.4;
+  transform: scale(0.96);
+}
+

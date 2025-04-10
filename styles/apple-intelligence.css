@@ -1,0 +1,344 @@
+/* Apple Intelligence specific styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.apple-ui {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 32px; /* Bordes más redondeados */
+  overflow: hidden;
+}
+
+.apple-ui:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Parallax effect for Apple Intelligence */
+.parallax-container {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+.parallax-element {
+  transform: translateZ(20px);
+  transition: transform 0.1s ease-out;
+}
+
+/* Spring physics animations */
+@keyframes spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(15px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-4px);
+  }
+  80% {
+    transform: scale(0.98) translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.spring-in {
+  animation: spring-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* VisionOS-like glass effect */
+.visionos-glass {
+  background: rgba(25, 25, 30, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset, 0 20px 60px
+    rgba(0, 0, 0, 0.15);
+  border-radius: 32px;
+}
+
+/* Dynamic border glow */
+.border-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 0.5px; /* Borde más delgado */
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Nuevos estilos para Apple Intelligence */
+.apple-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.apple-glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.apple-button {
+  border-radius: 20px;
+  background: rgba(60, 60, 60, 0.5);
+  backdrop-filter: blur(10px);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.apple-button:hover {
+  background: rgba(70, 70, 70, 0.6);
+  transform: translateY(-1px);
+}
+
+.apple-button:active {
+  transform: scale(0.97);
+}
+
+/* Animaciones de entrada y salida */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.fade-down {
+  animation: fade-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Efecto de pulso suave */
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+.soft-pulse {
+  animation: soft-pulse 4s ease-in-out infinite;
+}
+
+/* Efecto de desplazamiento suave */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Efecto de brillo en bordes */
+.edge-highlight {
+  position: relative;
+}
+
+.edge-highlight::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.edge-highlight:hover::before {
+  opacity: 1;
+}
+
+/* Estilos mejorados para PensIA */
+.pensia-glass {
+  background: rgba(25, 25, 30, 0.75);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset, 0 20px 60px
+    rgba(0, 0, 0, 0.15);
+  border-radius: 32px;
+}
+
+.pensia-card {
+  background: rgba(40, 40, 50, 0.6);
+  border-radius: 24px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 0.5px rgba(255, 255, 255, 0.05) inset;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pensia-card:hover {
+  background: rgba(50, 50, 60, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 0 0 0.5px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Animaciones mejoradas para PensIA */
+@keyframes float-subtle {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-3px) translateX(1px);
+  }
+  50% {
+    transform: translateY(0) translateX(2px);
+  }
+  75% {
+    transform: translateY(3px) translateX(1px);
+  }
+}
+
+.float-subtle {
+  animation: float-subtle 8s ease-in-out infinite;
+}
+
+/* Efecto de brillo mejorado */
+.pensia-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.pensia-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.pensia-glow:hover::before {
+  opacity: 1;
+}
+
+/* Transiciones mejoradas */
+.pensia-transition {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Efecto de profundidad */
+.pensia-depth {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.pensia-depth-item {
+  transform: translateZ(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pensia-depth:hover .pensia-depth-item {
+  transform: translateZ(20px);
+}
+
+/* Pill styles for predefined questions */
+.question-pill {
+  background: rgba(60, 60, 70, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+.question-pill:hover {
+  background: rgba(70, 70, 80, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.question-category {
+  position: relative;
+  overflow: hidden;
+}
+
+.question-category::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Glow effect for category headers */
+.category-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.category-header:hover::before {
+  opacity: 1;
+}
+
