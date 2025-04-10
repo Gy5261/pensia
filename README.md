@@ -18,7 +18,8 @@ Paso 1: Clona el Repositorio
 Para comenzar, necesitas obtener el código del proyecto en tu máquina local. Abre tu terminal (o CMD, si usas Windows) y ejecuta el siguiente comando:
 
 
-git clone https://github.com/Gy5261/pensia.git
+![image](https://github.com/user-attachments/assets/9c536ecd-18fd-4e51-a489-1749465a4c9b)
+
 Este comando descargará una copia del repositorio en tu computadora.
 
 Paso 2: Navega a la Carpeta del Proyecto
