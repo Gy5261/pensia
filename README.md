@@ -5,5 +5,6 @@
 
 No obstante, es crucial señalar que la inteligencia artificial en su estado actual no es completamente funcional, dado que está en una etapa de desarrollo. Sin embargo, algunas demostraciones o animaciones podrían estar operativas.
 
-![image](https://github.com/user-attachments/assets/bc6b85ba-e2f4-4307-8885-a5efc66135f6)
+![image](https://github.com/user-attachments/assets/9a543513-b711-46c3-bbe8-f447394c096d)
+
 Link de demo en vivo:https://v0-ejecutar-comando.vercel.app/ 
